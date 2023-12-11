@@ -6,19 +6,21 @@
 /*   By: kglebows <kglebows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:45:55 by kglebows          #+#    #+#             */
-/*   Updated: 2023/04/09 18:56:16 by kglebows         ###   ########.fr       */
+/*   Updated: 2023/08/14 13:43:33 by kglebows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	n;
-	int	s;
+	long		n;
+	int			s;
+	int			cnt;
 
 	s = 1;
 	n = 0;
+	cnt = 0;
 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v'
 		|| *str == '\f' || *str == '\r')
 		str++;
@@ -32,7 +34,10 @@ int	ft_atoi(const char *str)
 	{
 		n = n * 10 + (*str - '0');
 		str++;
+		cnt++;
 	}
+	if (cnt > 11)
+		return (99999999999);
 	return (n * s);
 }
 

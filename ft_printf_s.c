@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_printf_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kglebows <kglebows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 15:45:55 by kglebows          #+#    #+#             */
-/*   Updated: 2023/04/09 16:14:52 by kglebows         ###   ########.fr       */
+/*   Created: 2023/05/02 17:19:58 by kglebows          #+#    #+#             */
+/*   Updated: 2023/08/24 13:07:05 by kglebows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_printf_s(char *str)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	int	str_len;
+
+	if (!str)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	str_len = ft_strlen(str);
+	ft_putstr_fd(str, 1);
+	return (str_len);
 }
-// #include <stdio.h>
-// #include <string.h>
-
-// int main()
-// {
-//     char test = 'x';
-
-//     test = ft_toupper(test);
-//     write(1,&test,1);
-//     return(0);  
-// }

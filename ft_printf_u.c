@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_printf_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kglebows <kglebows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 15:45:55 by kglebows          #+#    #+#             */
-/*   Updated: 2023/04/17 18:25:21 by kglebows         ###   ########.fr       */
+/*   Created: 2023/05/02 17:19:58 by kglebows          #+#    #+#             */
+/*   Updated: 2023/08/24 13:07:10 by kglebows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_countnum(int n)
+int	ft_countnumbersu(unsigned int n)
 {
 	int	i;
 
 	i = 0;
-	if (n <= 0)
-		i++;
+	if (n == 0)
+		return (1);
 	while (n != 0)
 	{
 		n = n / 10;
@@ -27,26 +27,21 @@ int	ft_countnum(int n)
 	return (i);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_writenumber(unsigned int n)
 {
-	char	result[12];
-	int		cnt;
-
-	ft_bzero(result, 12);
-	cnt = ft_countnum(n);
-	if (n < 0)
-		result[0] = '-';
-	if (n == 0)
-		result[0] = '0';
-	while (cnt > 0)
+	if (n > 9)
+		ft_writenumber(n / 10);
+	else
 	{
-		cnt--;
-		if (n > 0)
-			result[cnt] = (char)(n % 10) + 48;
-		if (n < 0)
-			result[cnt] = (char)(n % 10)*(-1) + 48;
-		n = n / 10;
+		ft_printf_c(n + '0');
+		return ;
 	}
-	ft_putstr_fd(result, fd);
+	ft_printf_c((n % 10) + '0');
+}
+
+int	ft_printf_u(unsigned int n)
+{
+	ft_writenumber(n);
+	return (ft_countnumbersu(n));
 }
 //
