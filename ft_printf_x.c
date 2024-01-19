@@ -6,7 +6,7 @@
 /*   By: kglebows <kglebows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:19:58 by kglebows          #+#    #+#             */
-/*   Updated: 2023/08/24 13:07:14 by kglebows         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:04:04 by kglebows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_printf_x(unsigned long int n, int flag)
 	else
 		c_flag = 'A' - 10;
 	i = ft_counthex(n);
-	hex = calloc(i + 1, sizeof(char));
+	hex = ft_calloc(i + 1, sizeof(char));
 	if (!hex)
 		return (-1);
 	while (i)
