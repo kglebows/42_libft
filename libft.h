@@ -6,7 +6,7 @@
 /*   By: kglebows <kglebows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:44:12 by kglebows          #+#    #+#             */
-/*   Updated: 2023/09/25 14:03:48 by kglebows         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:12:06 by kglebows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ t_buffer	*ft_buffer_head(t_buffer **head, int fd);
 void		ft_buffer_clean(t_buffer *buffer, t_buffer **head);
 void		ft_buffer_refill(t_buffer *buffer, int fd);
 char		*ft_line(t_buffer *buffer, int fd);
+int			ft_isspace(int c);
+
 
 #endif
