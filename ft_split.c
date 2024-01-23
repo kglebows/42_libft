@@ -6,7 +6,7 @@
 /*   By: kglebows <kglebows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:45:55 by kglebows          #+#    #+#             */
-/*   Updated: 2023/04/21 11:06:52 by kglebows         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:11:06 by kglebows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,27 @@ char	**ft_split(char const *s, char c)
 {
 	char	**split;
 	size_t	start;
-	size_t	i;
-	size_t	j;
+	size_t	i[2];
 
-	i = 0;
-	j = 0;
-	split = malloc((ft_countwords(s, c) + 1) * sizeof(char *));
-	if (!s || split == NULL)
+	i[0] = 0;
+	i[1] = 0;
+	if (!s || s == NULL)
 		return (NULL);
-	while (i < (size_t) ft_strlen(s) && j < ft_countwords(s, c))
+	split = malloc((ft_countwords(s, c) + 1) * sizeof(char *));
+	if (!split || split == NULL)
+		return (NULL);
+	while (i[0] < (size_t) ft_strlen(s) && i[1] < ft_countwords(s, c))
 	{
-		while (s[i] == c)
-			i++;
-		start = i;
-		while (s[i] != c && s[i] != '\0')
-			i++;
-		split[j] = ft_substr(s, start, i - start);
-		if (ft_splitclean(split, j))
+		while (s[i[0]] == c)
+			i[0]++;
+		start = i[0];
+		while (s[i[0]] != c && s[i[0]] != '\0')
+			i[0]++;
+		split[i[1]] = ft_substr(s, start, i[0] - start);
+		if (ft_splitclean(split, i[1]))
 			return (NULL);
-		j++;
+		i[1]++;
 	}
-	split[j] = NULL;
+	split[i[1]] = NULL;
 	return (split);
 }
-//
